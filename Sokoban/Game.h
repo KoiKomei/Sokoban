@@ -8,7 +8,7 @@ public:
 	~Game();
 
 	virtual void LoadContent();
-	virtual void Update();
+	virtual void Update(ALLEGRO_EVENT ev);
 	virtual void Draw(ALLEGRO_DISPLAY *display);
 	virtual void Unload();
 

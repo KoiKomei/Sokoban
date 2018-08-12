@@ -1,8 +1,12 @@
 #pragma once
+#ifndef INPUT_H
+#define INPUT_H
+
+
 #include "SceneManager.h"
 #include <vector>
 
-
+using namespace std;
 class Input {
 
 public:
@@ -15,8 +19,7 @@ public:
 
 private:
 	ALLEGRO_KEYBOARD_STATE keyboard;
-
-
-
-
+	
 };
+
+#endif // !INPUT_H

@@ -8,10 +8,6 @@
 #include "Includer.h"
 using namespace std;
 
-/*Include di allegro*/
-
-
-
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -20,6 +16,7 @@ class SceneManager {
 
 private:
 	string text;
+	Game *current, *newscreen;
 	
 public:
 	SceneManager(void);
@@ -27,12 +24,14 @@ public:
 	SceneManager(SceneManager const& s); 
 	void operator=(SceneManager const&);
 
+	void addScene(Game *scene);
+
 	static SceneManager &GetInstance();
 	void setText(string txt);
 	void getText();
 	void Initialize();
 	void LoadContent();
-	void Update();
+	void Update(ALLEGRO_EVENT ev);
 	void Draw(ALLEGRO_DISPLAY *display);
 };
 #endif // !SCENEMANAGER

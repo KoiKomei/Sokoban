@@ -35,6 +35,8 @@ int main(int argc, char** argv) {
 
 	al_init_image_addon();
 	al_init_acodec_addon();
+	al_init_font_addon();
+	al_init_ttf_addon();
 	
 	al_register_event_source(queue, al_get_keyboard_event_source());
 	al_register_event_source(queue, al_get_timer_event_source(timer));
@@ -42,6 +44,10 @@ int main(int argc, char** argv) {
 
 	bool done = false;
 	Input input;
+	SceneManager::GetInstance().Initialize();
+	SceneManager::GetInstance().LoadContent();
+
+
 	al_start_timer(timer);
 	while (!done) {
 		ALLEGRO_EVENT ev;
@@ -50,6 +56,11 @@ int main(int argc, char** argv) {
 		if (input.isKeyReleased(ev, ALLEGRO_KEY_ESCAPE)) {
 			done = true;
 		}
+		SceneManager::GetInstance().Update(ev);
+		SceneManager::GetInstance().Draw(display);
+
+		al_flip_display();
+		al_clear_to_color(al_map_rgb(0, 0, 0));
 	}
 
 	al_destroy_display(display);
