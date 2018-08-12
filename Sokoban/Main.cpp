@@ -65,6 +65,8 @@ int main(int argc, char** argv) {
 		al_clear_to_color(al_map_rgb(0, 0, 0));
 	}
 
+	SceneManager::GetInstance().Unload();
+
 	al_destroy_display(display);
 	al_destroy_timer(timer);
 	al_destroy_event_queue(queue);
