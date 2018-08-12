@@ -1,4 +1,6 @@
 #pragma once
+#ifndef GAME_H
+#define GAME_H
 #include <allegro5/allegro.h>
 
 class Game {
@@ -13,3 +15,4 @@ public:
 	virtual void Unload();
 
 };
+#endif 

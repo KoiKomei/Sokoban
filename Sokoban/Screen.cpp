@@ -1,6 +1,5 @@
 #include "Screen.h"
 
-
 void Screen::LoadContent() {
 	font = al_load_font("ariali.ttf", 30, NULL);
 }

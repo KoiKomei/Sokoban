@@ -1,12 +1,17 @@
 #pragma once
-#ifndef SCENEMANAGER
-#define SCENEMANAGER
+#ifndef SCENEMANAGER_H
+#define SCENEMANAGER_H
+
 #include <iostream>
 #include <string>
 #include "Game.h"
 #include "Screen.h"
-#include "Includer.h"
+
 using namespace std;
+
+
+/*Allegro include*/
+#include "allegro5/allegro.h"
 
 
 #define WIDTH 800

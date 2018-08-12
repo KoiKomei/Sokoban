@@ -1,4 +1,5 @@
 #include "MainMenu.h"
+
 void MainMenu::LoadContent() {
 	font = al_load_font("ariali.ttf", 30, NULL);
 }

@@ -2,7 +2,9 @@
 #include <iostream>
 #include "SceneManager.h"
 #include "Input.h"
-
+#include "allegro5/allegro_native_dialog.h"
+#include "allegro5/allegro_image.h"
+#include "allegro5/allegro_acodec.h"
 using namespace std;
 
 int main(int argc, char** argv) {
