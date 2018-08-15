@@ -3,8 +3,7 @@
 #define SCREEN_H
 
 
-#include "MainMenu.h"
-#include "Input.h"
+#include "MenuManager.h"
 #include "allegro5/allegro_font.h"
 #include "allegro5/allegro_ttf.h"
 class Screen : public Game {
@@ -16,6 +15,11 @@ public:
 private:
 	ALLEGRO_FONT * font;
 	Input input;
+	FileManager filemanager;
+	vector<ALLEGRO_BITMAP*> images;
+	vector<Animation*> fade;
+	Fade anim;
+	int imageNumber;
 };
 
 #endif // !SCREEN_H

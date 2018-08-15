@@ -1,4 +1,6 @@
 #include "SceneManager.h"
+#include "MainMenu.h"
+#include "Screen.h"
 
 SceneManager &SceneManager::GetInstance() {
 	static SceneManager instance;
@@ -9,11 +11,12 @@ SceneManager::SceneManager() {}
 
 SceneManager::~SceneManager() {}
 
-void SceneManager::addScene(Game *scene) {
+void SceneManager::addScene(string sceneName) {
 
-	transition.setAlpha(0);
+	transition.getAlpha() = 0;
+	fade.setIncrease(true);
 	startTransition = true;
-	newscene = scene;
+	newscene = directory[sceneName];
 	transition.setIsActive(true);
 	
 }
@@ -29,21 +32,32 @@ void SceneManager::getText() {
 }
 
 void SceneManager::Initialize() {
-	current = new Screen();
+
+	cout << "MA COSA STA SUCCEDENDO" << endl;
+	directory["Screen"] = new Screen();
+	directory["Title"] = new MainMenu();
+	directory["Gameplay"] = new Gameplay();
+	current = directory["Screen"];
 
 }
 
 void SceneManager::LoadContent() {
 	(*current).LoadContent();
 	trans = al_load_bitmap("black.png");
-	float pos[2] = { 0,0 };
-	transition.LoadContent(trans, "", pos);
+	pair<float, float>position(0, 0);
+	transition.LoadContent(trans, "", position);
 	startTransition = false;
 }
 
 void SceneManager::Unload() {
 	al_destroy_bitmap(trans);
+	(*current).Unload();
 	transition.Unload();
+
+	for (map<string, Game*>::iterator it = directory.begin(); it != directory.end(); it++) {
+		(*it).second;
+	}
+	directory.clear();
 }
 
 void SceneManager::Update(ALLEGRO_EVENT ev) {
@@ -60,18 +74,18 @@ void SceneManager::Draw(ALLEGRO_DISPLAY *display) {
 }
 
 void SceneManager::Transition() {
-	transition.Update((*current).getInput());
+	fade.Update(transition);
 	if (transition.getAlpha() >= 255) {
-		transition.setAlpha(255);
+		transition.getAlpha()=255;
 		
 		(*current).Unload();
-		delete current;
+		
 		current = newscene;
 		(*current).LoadContent();
 		al_rest(1.0f);
 	}
 	else if (transition.getAlpha() <= 0) {
 		startTransition = false;
-		transition.setIsActive(false);
+		transition.getIsActive()=false;
 	}
 }

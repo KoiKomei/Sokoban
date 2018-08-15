@@ -1,0 +1,9 @@
+Load=[Image]
+[black.png]
+[red.png]
+[yellow.png]
+
+Load=[Title]
+
+
+EndLoad=[Title]

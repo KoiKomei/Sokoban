@@ -1,0 +1,12 @@
+Load=[Title]
+
+Load=[Position][Axis][Font][Animation]
+[0 0][2][ariali.ttf][Fade]
+
+Load=[Item][ItemLink]
+[New Game][Gameplay]
+[Load Game][Screen]
+[Options][Screen]
+[Credits][Screen]
+
+EndLoad=[Title]

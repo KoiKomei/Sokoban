@@ -45,6 +45,7 @@ int main(int argc, char** argv) {
 	al_register_event_source(queue, al_get_display_event_source(display));
 
 	bool done = false;
+	al_set_blender(ALLEGRO_ADD, ALLEGRO_ALPHA, ALLEGRO_INVERSE_ALPHA);
 	Input input;
 	SceneManager::GetInstance().Initialize();
 	SceneManager::GetInstance().LoadContent();
@@ -56,6 +57,9 @@ int main(int argc, char** argv) {
 		al_wait_for_event(queue, &ev);
 		al_get_keyboard_state(&keyboard);
 		if (input.isKeyReleased(ev, ALLEGRO_KEY_ESCAPE)) {
+			done = true;
+		}
+		if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
 			done = true;
 		}
 		SceneManager::GetInstance().Update(ev);

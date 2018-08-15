@@ -1,0 +1,2 @@
+Load=[Image][Position]
+[yukki.png][10,10]

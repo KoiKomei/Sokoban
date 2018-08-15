@@ -7,6 +7,8 @@
 #include "Game.h"
 #include "Screen.h"
 #include "Fade.h"
+#include "Gameplay.h"
+#include <map>
 
 using namespace std;
 
@@ -24,16 +26,18 @@ class SceneManager {
 private:
 	string text;
 	Game *current, *newscene;
-	Fade transition;
+	Animation transition;
+	Fade fade;
 	ALLEGRO_BITMAP *trans;
 	bool startTransition;
+	map<string, Game*> directory;
 public:
 	SceneManager(void);
 	~SceneManager(void);
 	SceneManager(SceneManager const& s); 
 	void operator=(SceneManager const&);
 
-	void addScene(Game *scene);
+	void addScene(string sceneName);
 
 	static SceneManager &GetInstance();
 	void setText(string txt);

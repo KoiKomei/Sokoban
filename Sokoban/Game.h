@@ -3,6 +3,7 @@
 #define GAME_H
 #include <allegro5/allegro.h>
 #include "Input.h"
+#include "FileManager.h"
 
 class Game {
 
@@ -19,5 +20,7 @@ public:
 
 protected:
 	Input input;
+	vector<vector<string>> attributes, contents;
+	FileManager file;
 };
 #endif 

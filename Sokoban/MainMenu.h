@@ -3,9 +3,7 @@
 #define MAINMENU_H
 
 
-
-#include "SceneManager.h"
-#include "Input.h"
+#include "MenuManager.h"
 #include "allegro5/allegro_font.h"
 #include "allegro5/allegro_ttf.h"
 
@@ -23,5 +21,6 @@ public:
 private:
 	ALLEGRO_FONT * font;
 	Input input;
+	MenuManager menu;
 };
 #endif // !MAINMENU_H

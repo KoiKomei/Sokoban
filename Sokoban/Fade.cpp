@@ -1,40 +1,39 @@
 #include "Fade.h"
 
-void Fade::LoadContent(ALLEGRO_BITMAP *image, string txt, float position[2]){
-	Animation::LoadContent(image, txt, position);
-	speed = 1.0f;
+Fade::Fade() {
+	speed = 10.0f;
 	increase = false;
 }
 
-void Fade::Unload() {
-	Animation::Unload();
-	speed = NULL;
-}
 
-void Fade::Update(Input input) {
 
-	if (isActive) {
+
+void Fade::Update(Animation &a) {
+
+	if (a.getIsActive()) {
 		if (!increase) {
-			alpha -= speed;
+			a.getAlpha() -= speed;
 		}
 		else {
-			alpha += speed;
+			a.getAlpha() += speed;
 		}
-		if (alpha <= 0) {
-			alpha = 0;
+		if (a.getAlpha() <= 0) {
+			a.getAlpha() = 0;
 			increase = true;
 		}
-		else if (alpha >= 255){
-			alpha = 255;
+		else if (a.getAlpha() >= 255){
+			a.getAlpha()= 255;
 			increase = false;
 			
 		}
 		
 	}
 	else {
-		alpha = 255;
+		a.getAlpha() = 255;
 	}
 	
-	
+}
 
+void Fade::setIncrease(bool value) {
+	increase = value;
 }

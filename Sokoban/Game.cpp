@@ -10,4 +10,7 @@ void Game::Draw(ALLEGRO_DISPLAY *display) {}
 
 void Game::Update(ALLEGRO_EVENT ev) {}
 
-void Game::Unload() {}
+void Game::Unload() {
+	attributes.clear();
+	contents.clear();
+}
