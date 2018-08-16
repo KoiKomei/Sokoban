@@ -5,7 +5,7 @@ Load=[Position][Axis][Font][Animation]
 
 Load=[Item][ItemLink]
 [New Game][Gameplay]
-[Load Game][Screen]
+[Load Game][Gameplay]
 [Options][Screen]
 [Credits][Screen]
 

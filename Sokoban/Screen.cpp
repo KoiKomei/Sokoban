@@ -4,7 +4,7 @@ void Screen::LoadContent() {
 	cout << "PROVA" << endl;
 	imageNumber = 0;
 	font = al_load_font("ariali.ttf", 30, NULL);
-	filemanager.LoadContent("loader.txt", attributes, contents);
+	filemanager.LoadContent("utilities/loader.txt", attributes, contents);
 	for (int i = 0; i < attributes.size(); i++) {
 		for (int j = 0; j < attributes[i].size(); j++) {
 			if (attributes[i][j] == "Image") {

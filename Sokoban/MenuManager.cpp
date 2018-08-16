@@ -33,7 +33,7 @@ void MenuManager::setAnimations() {
 }
 
 void MenuManager::LoadContent(string ID) {
-	file.LoadContent("Menu.txt", attributes, contents);
+	file.LoadContent("utilities/Menu.txt", attributes, contents);
 	float position[2];
 	for (int i = 0; i < attributes.size(); i++) {
 		for (int j = 0; j < attributes[i].size(); j++) {

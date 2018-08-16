@@ -12,40 +12,58 @@ Player::~Player()
 {
 }
 
-void Player::LoadContent() {
-	file.LoadContent("Player.txt", attributes, contents);
-	for (int i = 0; i < attributes.size(); i++) {
-		for (int j = 0; j < attributes[i].size(); j++) {
-			if (attributes[i][j] == "Image") {
-				playerImage = al_load_bitmap(contents[i][j].c_str());
-			}
-			else if (attributes[i][j] == "Position") {
-				stringstream str;
-				float position[2];
-				str << contents[i][j];
-				string value;
-				int counter = 0;
-				while (getline(str, value, ',')) {
-					position[counter] = atof(value.c_str());
-					counter++;
-				}
-				(*this).position.first = position[0];
-				(*this).position.second = position[1];
-			}
-		}
-	}
-
+void Player::LoadContent(vector<string> attributes, vector<string> contents) {
+	Entity::LoadContent(attributes, contents);
+	
+	speed = 1;
+	direction = Direction::Down;
+	
 }
 
 void Player::Unload() {
-	attributes.clear();
-	contents.clear();
-	al_destroy_bitmap(playerImage);
+	Entity::Unload();
+	animation.Unload();
 }
 
 void Player::Update(ALLEGRO_EVENT ev, Input input) {
+	Entity::Update(ev, input);
+	input.Update();
+	animation.getIsActive() = true;
+
+	if (input.isKeyDown(ALLEGRO_KEY_DOWN)) {
+		direction = Direction::Down;
+		position.second += speed;
+	}
+	else if (input.isKeyDown(ALLEGRO_KEY_UP)) {
+		direction = Direction::Up;
+		position.second -= speed;
+	}
+	else if (input.isKeyDown(ALLEGRO_KEY_RIGHT)) {
+		direction = Direction::Right;
+		position.first += speed;
+	}
+	else if (input.isKeyDown(ALLEGRO_KEY_LEFT)) {
+		direction = Direction::Left;
+		position.first -= speed;
+	}
+	else
+		animation.getIsActive() = false;
+	animation.CurrentFrame().second = direction;
+	animation.Position() = position;
+	sprite.Update(animation);
+
+	delete rect;
+	delete prevRect;
+	rect = new FloatRect(position.first, position.second, 32, 32);
+
+	prevRect = new FloatRect(prevPosition.first, prevPosition.second, 32, 32);
+}
+
+void Player::OnCollision(Entity e) {
+	cout << "PLAYER COLLIDED" << endl;
+	
 }
 
 void Player::Draw(ALLEGRO_DISPLAY *display) {
-	al_draw_bitmap(playerImage, position.first, position.second, NULL);
+	Entity::Draw(display);
 }

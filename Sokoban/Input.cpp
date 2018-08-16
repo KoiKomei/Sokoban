@@ -1,5 +1,10 @@
 #include "Input.h"
 
+
+void Input::Update() {
+	al_get_keyboard_state(&keyboard);
+}
+
 bool Input::isKeyPressed(ALLEGRO_EVENT ev, int key) {
 	if (ev.type == ALLEGRO_EVENT_KEY_DOWN) {
 		if (ev.keyboard.keycode == key) {
@@ -41,4 +46,11 @@ bool Input::isKeyReleased(ALLEGRO_EVENT ev, vector <int> keys) {
 	return false;
 
 
+}
+
+bool Input::isKeyDown(int key) {
+	if (al_key_down(&keyboard, key)) {
+		return true;
+	}
+	return false;
 }

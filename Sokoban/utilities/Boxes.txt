@@ -1,0 +1,8 @@
+Load=[Image][Position][Direction][Range][MoveSpeed]
+[yukki.png][150,150][Down][1][1]
+Load=[Image][Position][Direction][Range][MoveSpeed]
+[yukki.png][200,150][Down][1][1]
+Load=[Image][Position][Direction][Range][MoveSpeed]
+[yukki.png][250,150][Down][1][1]
+Load=[Image][Position][Direction][Range][MoveSpeed]
+[yukki.png][350,150][Down][1][1]

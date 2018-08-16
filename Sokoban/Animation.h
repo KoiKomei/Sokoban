@@ -19,12 +19,23 @@ public:
 
 	void setIsActive(bool value) { isActive = value; }
 	bool &getIsActive(){ return isActive; }
+
+	pair<float,float> &Position();
+	pair<int, int> &AmountOfFrames();
+	pair<int, int> &CurrentFrame();
+	pair<int, int> FrameSize();
+	ALLEGRO_BITMAP* Sprite();
+	ALLEGRO_BITMAP *&SourceRect();
+
+
 private:
 	ALLEGRO_BITMAP * image, *rectangle;
 	string txt;
 	ALLEGRO_FONT *font;
 
 	pair<float,float> position;
+	pair <int, int> frames;
+	pair<int, int> currentFrame;
 	float alpha;
 	bool isActive;
 

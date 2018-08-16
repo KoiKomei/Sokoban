@@ -1,6 +1,8 @@
 #pragma once
 #include "Game.h"
-#include "Player.h"
+
+#include "Map.h"
+#include "EntityManager.h"
 class Gameplay: public Game
 {
 public:
@@ -13,6 +15,7 @@ public:
 	void Draw(ALLEGRO_DISPLAY *display);
 
 private:
-	Player player;
+	EntityManager player, boxes;
+	Map map;
 };
 
