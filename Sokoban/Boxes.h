@@ -13,5 +13,6 @@ public:
 	void Draw(ALLEGRO_DISPLAY *display);
 private:
 	int counter;
+	bool moving;
 };
 

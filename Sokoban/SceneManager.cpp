@@ -37,7 +37,7 @@ void SceneManager::Initialize() {
 	directory["Screen"] = new Screen();
 	directory["Title"] = new MainMenu();
 	directory["Gameplay"] = new Gameplay();
-	current = directory["Screen"];
+	current = directory["Gameplay"];
 
 }
 

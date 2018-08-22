@@ -1,5 +1,6 @@
 #pragma once
 #include "allegro5/allegro.h"
+#include "allegro5/allegro_primitives.h"
 #include "Animation.h"
 #include "Player.h"
 #include <iostream>
@@ -10,7 +11,7 @@ public:
 	Tile();
 	~Tile();
 	
-	enum State {Solid, Passive};
+	enum State {Solid, Passive, Movable};
 
 	void setContent(int id, ALLEGRO_BITMAP *tileImage, State state, pair<float, float> position);
 	void Unload();

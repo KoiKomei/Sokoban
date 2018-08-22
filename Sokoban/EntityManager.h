@@ -16,6 +16,9 @@ public:
 	void Draw(ALLEGRO_DISPLAY *display);
 
 	vector<Entity*> entities;
+	bool moving;
+
+
 private:
 	
 };

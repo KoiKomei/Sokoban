@@ -40,8 +40,8 @@ void Gameplay::Update(ALLEGRO_EVENT ev) {
 
 void Gameplay::Draw(ALLEGRO_DISPLAY *display) {
 	map.Draw(display);
-	
-	player.Draw(display);
 	boxes.Draw(display);
+	player.Draw(display);
+	
 
 }

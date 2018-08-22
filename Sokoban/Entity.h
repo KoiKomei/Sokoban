@@ -1,5 +1,6 @@
 #pragma once
 #include "allegro5/allegro.h"
+#include "allegro5/allegro_primitives.h"
 #include <vector>
 #include <string>
 #include "Input.h"
@@ -25,6 +26,10 @@ public:
 	bool gravity;
 	FloatRect *rect, *prevRect;
 	int tileID;
+
+	enum Direction { Up, Right, Down, Left };
+
+	Direction direction;
 protected:
 	
 	ALLEGRO_BITMAP *image;
@@ -34,8 +39,5 @@ protected:
 	Spritesheet sprite;
 	int range;
 
-	enum Direction { Up, Right, Down, Left };
-
-	Direction direction;
 };
 

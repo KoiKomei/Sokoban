@@ -39,6 +39,7 @@ int main(int argc, char** argv) {
 	al_init_acodec_addon();
 	al_init_font_addon();
 	al_init_ttf_addon();
+	al_init_primitives_addon();
 	
 	al_register_event_source(queue, al_get_keyboard_event_source());
 	al_register_event_source(queue, al_get_timer_event_source(timer));

@@ -28,6 +28,9 @@ void Layer::LoadContent(string ID, string mapID) {
 			if (attributes[i][j] == "SolidTiles") {
 				solidTiles.push_back(setTiles(contents[i][j]));
 			}
+			else if(attributes[i][j]=="MoveTiles") {
+				moveTiles.push_back(setTiles(contents[i][j]));
+			}
 			else if (attributes[i][j] == "TileSheet") {
 				tileSheet = al_load_bitmap(contents[i][j].c_str());
 			}
@@ -39,6 +42,9 @@ void Layer::LoadContent(string ID, string mapID) {
 						pair<int, int> tile=setTiles(contents[i][k]);
 						if (find(solidTiles.begin(), solidTiles.end(), tile) != solidTiles.end()) {
 							tempState = Tile::State::Solid;
+						}
+						if (find(moveTiles.begin(), moveTiles.end(), tile) != moveTiles.end()) {
+							tempState = Tile::State::Movable;
 						}
 						tileImage = al_create_sub_bitmap(tileSheet, tile.first * 32, tile.second * 32, 32, 32);
 

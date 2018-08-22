@@ -14,6 +14,7 @@ EntityManager::~EntityManager()
 void EntityManager::LoadContent(string filename, string id, string type) {
 	vector<vector<string>> attributes, contents;
 	FileManager file;
+	moving = false;
 	if (id == "") {
 		file.LoadContent(filename.c_str(), attributes, contents);
 	}
@@ -50,8 +51,28 @@ void EntityManager::EntityCollision(EntityManager e) {
 	for (int i = 0; i < entities.size(); i++) {
 		for (int j = 0; j < e.entities.size(); j++) {
 			if ((*entities[i]).rect->Intersects(*e.entities[j]->rect)) {
-				(*entities[i]).OnCollision(*e.entities[j]);
-				(*e.entities[j]).OnCollision(*entities[i]);
+				
+				if (entities[i]->rect->Bottom >= e.entities[j]->rect->Top && entities[i]->prevRect->Bottom <= e.entities[j]->rect->Top) {
+					(*entities[i]).position.second = e.entities[j]->rect->Top - 32;
+					(*e.entities[j]).OnCollision(*entities[i]);
+				}
+				else if (entities[i]->rect->Top <= e.entities[j]->rect->Bottom && entities[i]->prevRect->Top >= e.entities[j]->rect->Bottom) {
+					(*entities[i]).position.second = e.entities[j]->rect->Bottom;
+					(*e.entities[j]).OnCollision(*entities[i]);
+				}
+				else if (entities[i]->rect->Right >= e.entities[j]->rect->Left && entities[i]->prevRect->Right <= e.entities[j]->rect->Left) {
+					(*entities[i]).position.first = e.entities[j]->rect->Left - 32;
+					(*e.entities[j]).OnCollision(*entities[i]);
+				}
+				else if (entities[i]->rect->Left <= e.entities[j]->rect->Right && entities[i]->prevRect->Left >= e.entities[j]->rect->Right) {
+					(*entities[i]).position.first = e.entities[j]->rect->Right;
+					(*e.entities[j]).OnCollision(*entities[i]);
+				}
+				entities[i]->animation.Position() = entities[i]->position;
+				
+				//(*entities[i]).OnCollision(*e.entities[j]);
+				
+				
 			}
 		}
 	}

@@ -16,7 +16,6 @@ void Player::LoadContent(vector<string> attributes, vector<string> contents) {
 	Entity::LoadContent(attributes, contents);
 	
 	speed = 1;
-	direction = Direction::Down;
 	
 }
 
@@ -60,7 +59,7 @@ void Player::Update(ALLEGRO_EVENT ev, Input input) {
 }
 
 void Player::OnCollision(Entity e) {
-	cout << "PLAYER COLLIDED" << endl;
+	//cout << "PLAYER COLLIDED" << endl;
 	
 }
 

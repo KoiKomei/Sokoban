@@ -19,7 +19,7 @@ public:
 private:
 	FileManager file;
 	vector<vector<string>>attributes, contents;
-	vector<pair<int, int>> solidTiles;
+	vector<pair<int, int>> solidTiles, moveTiles;
 	vector<Tile> tiles;
 	ALLEGRO_BITMAP *tileSheet;
 

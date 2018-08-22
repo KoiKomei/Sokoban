@@ -43,7 +43,6 @@ void Tile::Update(Entity &e) {
 		}
 		e.animation.Position() = e.position;
 	}
-	
 }
 
 void Tile::Draw(ALLEGRO_DISPLAY * display) {

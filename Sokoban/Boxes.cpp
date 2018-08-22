@@ -13,22 +13,26 @@ Boxes::~Boxes()
 
 
 void Boxes::LoadContent(vector<string> attributes, vector<string> contents) {
-	counter = 0;
+	
 	Entity::LoadContent(attributes, contents);
+	counter = 0;
 	animation.getIsActive() = true;
-	direction = Direction::Down;
+	moving = false;
 }
-void Boxes::Unload() {}
+void Boxes::Unload() {
+	Entity::Unload();
+}
 void Boxes::Update(ALLEGRO_EVENT ev, Input input) {
-	/*prevPosition = position;
-	if (direction == Direction::Right) {
-		position.first += speed;
+	prevPosition = position;
+	/*if (direction == Direction::Right) {
+		moveSpeed.first = speed;
 	}
 	else if (direction == Direction::Left) {
-		position.first -= speed;
+		moveSpeed.first = -speed;
 	}
 	else
 		animation.getIsActive() = false;
+		*/
 	position.first = position.first + moveSpeed.first;
 	position.second = position.second + moveSpeed.second;
 	animation.CurrentFrame().second = direction;
@@ -38,7 +42,6 @@ void Boxes::Update(ALLEGRO_EVENT ev, Input input) {
 	delete rect;
 	delete prevRect;
 	rect = new FloatRect(position.first, position.second, 32, 32);
-
 	prevRect = new FloatRect(prevPosition.first, prevPosition.second, 32, 32);
 	/*counter += moveSpeed.first;
 	if (counter >= range) {
@@ -48,7 +51,8 @@ void Boxes::Update(ALLEGRO_EVENT ev, Input input) {
 		}
 		else
 			direction = Direction::Right;
-	}*/
+	}
+	/*
 	Entity::Update(ev, input);
 	input.Update();
 	animation.getIsActive() = true;
@@ -80,12 +84,17 @@ void Boxes::Update(ALLEGRO_EVENT ev, Input input) {
 	rect = new FloatRect(position.first, position.second, 32, 32);
 
 	prevRect = new FloatRect(prevPosition.first, prevPosition.second, 32, 32);
+	*/
 }
 
 void Boxes::OnCollision(Entity e) {
-	cout << "Enemy collision" << endl;
-	e.position.first = position.first + 20;
 
+	while (!moving) {
+		moving = true;
+		cout << "Enemy collision" << endl;
+
+	}
+	
 }
 
 void Boxes::Draw(ALLEGRO_DISPLAY *display) {
