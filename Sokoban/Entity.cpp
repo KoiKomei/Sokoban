@@ -38,9 +38,9 @@ void Entity::LoadContent(vector<string> attributes, vector<string> contents) {
 		else if (attributes[i] == "Speed") {
 			speed = atof(contents[i].c_str());
 		}
-		else if (attributes[i] == "Range") {
+		/*else if (attributes[i] == "Range") {
 			range = atoi(contents[i].c_str());
-		}
+		}*/
 
 		
 	}

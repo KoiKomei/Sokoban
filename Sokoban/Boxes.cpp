@@ -88,10 +88,29 @@ void Boxes::Update(ALLEGRO_EVENT ev, Input input) {
 }
 
 void Boxes::OnCollision(Entity e) {
-
+		prevPosition = position;
 	
 		cout << "Enemy collision" << endl;
-		
+		if(e.direction==Direction::Right){
+		position.first = position.first + 1;
+		}
+		else if (e.direction == Direction::Left) {
+			position.first = position.first-1;
+		}
+		else if (e.direction == Direction::Up) {
+			position.second = position.second -1;
+		}
+		else if (e.direction == Direction::Down) {
+			position.second = position.second+1;
+		}
+		//animation.CurrentFrame().second = direction;
+		//animation.Position() = position;
+		//sprite.Update(animation);
+
+		delete rect;
+		delete prevRect;
+		rect = new FloatRect(position.first, position.second, 32, 32);
+		prevRect = new FloatRect(prevPosition.first, prevPosition.second, 32, 32);
 	
 	
 }

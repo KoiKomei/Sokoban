@@ -1,2 +1,2 @@
 Load=[Image][Position]
-[yukki.png][50,50]
+[yukki.png][384,256]

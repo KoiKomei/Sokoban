@@ -35,6 +35,7 @@ void Gameplay::Update(ALLEGRO_EVENT ev) {
 	}
 
 	player.EntityCollision(boxes);
+	boxes.EntityCollision(boxes);
 		
 }
 
