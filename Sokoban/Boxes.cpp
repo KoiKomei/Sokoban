@@ -89,11 +89,10 @@ void Boxes::Update(ALLEGRO_EVENT ev, Input input) {
 
 void Boxes::OnCollision(Entity e) {
 
-	while (!moving) {
-		moving = true;
+	
 		cout << "Enemy collision" << endl;
-
-	}
+		
+	
 	
 }
 

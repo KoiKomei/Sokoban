@@ -8,7 +8,7 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-	const float fps = 60.0f;
+	const float fps = 30.0f;
 	
 	ALLEGRO_DISPLAY *display;
 	if (!al_init()) {
