@@ -16,7 +16,7 @@ void Entity::LoadContent(vector<string> attributes, vector<string> contents) {
 	for (int i = 0; i < attributes.size(); i++) {
 		if (attributes[i] == "Image") {
 			image = al_load_bitmap(contents[i].c_str());
-			
+
 		}
 		else if (attributes[i] == "Position") {
 			string tileString = contents[i];
@@ -38,6 +38,11 @@ void Entity::LoadContent(vector<string> attributes, vector<string> contents) {
 		else if (attributes[i] == "Speed") {
 			speed = atof(contents[i].c_str());
 		}
+		else if (attributes[i] == "Box") {
+			type = Entity::Box;
+		}
+		else
+			type = Entity::Player;
 		/*else if (attributes[i] == "Range") {
 			range = atoi(contents[i].c_str());
 		}*/
@@ -45,6 +50,7 @@ void Entity::LoadContent(vector<string> attributes, vector<string> contents) {
 		
 	}
 	animation.LoadContent(image, "", position);
+	
 	rect = new FloatRect(position.first, position.second, 32, 32);
 
 	prevRect = new FloatRect(prevPosition.first, prevPosition.second, 32, 32);

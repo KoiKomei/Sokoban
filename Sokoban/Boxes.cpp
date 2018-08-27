@@ -88,6 +88,8 @@ void Boxes::Update(ALLEGRO_EVENT ev, Input input) {
 }
 
 void Boxes::OnCollision(Entity e) {
+
+		if(e.type==Entity::Type::Player){
 		prevPosition = position;
 	
 		cout << "Enemy collision" << endl;
@@ -111,7 +113,7 @@ void Boxes::OnCollision(Entity e) {
 		delete prevRect;
 		rect = new FloatRect(position.first, position.second, 32, 32);
 		prevRect = new FloatRect(prevPosition.first, prevPosition.second, 32, 32);
-	
+		}
 	
 }
 

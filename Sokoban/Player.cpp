@@ -14,8 +14,7 @@ Player::~Player()
 
 void Player::LoadContent(vector<string> attributes, vector<string> contents) {
 	Entity::LoadContent(attributes, contents);
-	
-	speed = 1;
+	//speed = 1;
 	
 }
 
@@ -53,9 +52,9 @@ void Player::Update(ALLEGRO_EVENT ev, Input input) {
 
 	delete rect;
 	delete prevRect;
-	rect = new FloatRect(position.first, position.second, 20, 32);
+	rect = new FloatRect(position.first, position.second, 32, 32);
 
-	prevRect = new FloatRect(prevPosition.first, prevPosition.second, 20, 32);
+	prevRect = new FloatRect(prevPosition.first, prevPosition.second, 32, 32);
 }
 
 void Player::OnCollision(Entity e) {

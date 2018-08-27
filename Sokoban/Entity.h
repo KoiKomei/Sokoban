@@ -15,7 +15,8 @@ class Entity
 public:
 	Entity();
 	~Entity();
-
+	enum Type {Box, Player};
+	Type type;
 	virtual void LoadContent(vector<string> attributes, vector<string> content);
 	virtual void Unload();
 	virtual void Update(ALLEGRO_EVENT ev, Input input);

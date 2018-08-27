@@ -25,6 +25,7 @@ void EntityManager::LoadContent(string filename, string id, string type) {
 		Entity *entity;
 		if (type == "Player") {
 			entity = new Player();
+			
 		}
 		else if (type == "Box") {
 			entity = new Boxes();
@@ -50,7 +51,7 @@ void EntityManager::Update(ALLEGRO_EVENT ev, Input input) {
 void EntityManager::EntityCollision(EntityManager e) {
 	for (int i = 0; i < entities.size(); i++) {
 		for (int j = 0; j < e.entities.size(); j++) {
-			if ((*entities[i]).rect->Intersects(*e.entities[j]->rect)) {
+			if ((*entities[i]).rect->Intersects(*e.entities[j]->rect)){
 				
 				if (entities[i]->rect->Bottom >= e.entities[j]->rect->Top && entities[i]->prevRect->Bottom <= e.entities[j]->rect->Top) {
 					(*entities[i]).position.second = e.entities[j]->rect->Top - 32;
@@ -74,6 +75,7 @@ void EntityManager::EntityCollision(EntityManager e) {
 				
 				
 			}
+			
 		}
 	}
 }
